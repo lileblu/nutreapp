@@ -1,16 +1,44 @@
 package com.example.models;
 
+import java.util.UUID;
+
 import com.example.models.helpers.Departamento;
 import com.example.models.helpers.Rol;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+
+@Entity 
+@Table (name="usuarios")
 public class Usuario {
 
-    
+    @Id 
+    @GeneratedValue (strategy =GenerationType.UUID)
     private UUID id;
+
+    @Column (name = "nombre", nullable = false, unique = false, length = 100)
     private String nombre;
+
+    @Column (name = "correo", nullable = false, unique = true, length = 80)
     private String correo;
+
+
+    @Enumerated (EnumType.STRING)
+    @Column (name = "rol", nullable = false, unique =false)
     private Rol rol;
+
+    @Enumerated (EnumType.STRING)
+    @Column (name= "departamento", nullable= false, unique= false)
     private Departamento departamento;
+
+
+    @Column (name= "contraseña_hash", nullable= false, unique=false)
     private String contrasena_hash;
     
     public Usuario() {
@@ -25,8 +53,7 @@ public class Usuario {
         this.contrasena_hash = contrasena_hash;
     }
 
-    public UUID getId() {
-        return id;
+    public UUID getId() {        return id;
     }
 
     public void setId(UUID id) {
@@ -72,10 +99,5 @@ public class Usuario {
     public void setContrasena_hash(String contrasena_hash) {
         this.contrasena_hash = contrasena_hash;
     }
-
-    
-
-
-
 
 }
