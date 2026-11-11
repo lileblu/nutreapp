@@ -2,11 +2,28 @@ package com.example.models;
 
 import java.util.UUID;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+
+
+@Entity 
+@Table (name = "Video")
 public class Video {
 
+    @Id 
+    @GeneratedValue (strategy =GenerationType.UUID)
     private UUID id;
+
+      @Column (name = "titulo", nullable = false, unique = false, length = 100)
     private String titulo;
+
+    @Column (name = "descripcion", nullable = false, unique = false, length = 100)
     private String descripcion;
+
+    @Column (name = "url", nullable = false, unique = false, length = 100)
     private String url;
     
     public Video() {

@@ -1,11 +1,28 @@
 package com.example.models;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
+import jakarta.annotation.Nullable;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+
+
+@Entity 
+@Table (name="Visualizacion")
 public class Visualizacion {
 
+
+    @Id 
+    @GeneratedValue (strategy =GenerationType.UUID)
     private UUID id;
+
+    @Column (name = "fecha_visualizacion", nullable = false, unique = false, length = 100)
     private LocalDate fecha_visualizacion,
+
+    @Column (name = "completado", nullable = false, unique = false)
     private Bollean completado;
     
     public Visualizacion() {
