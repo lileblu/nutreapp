@@ -1,12 +1,17 @@
 package com.example.models;
 
+import java.util.List;
 import java.util.UUID;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 
@@ -27,7 +32,21 @@ public class Video {
 
     @Column (name = "url", nullable = false, unique = false, length = 100)
     private String url;
+
+
+
+
+    //Creando una relacion 
+    @OneToMany (mappedBy="usuario")
+    @JsonManagedReference()
+
+    private Video video;
+    private <Video> video;
     
+
+
+
+
     public Video() {
     }
 
